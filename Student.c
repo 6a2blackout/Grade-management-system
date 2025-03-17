@@ -1,6 +1,7 @@
 //this is the student functions
 
 #include "Student.h"
+#include <string.h>
 
 
 
@@ -9,9 +10,11 @@ Student * createStudent(int idIn, char *nameIn){
     Student *johnDoe = malloc(sizeof(Student));
 
     johnDoe->id = idIn;
-    johnDoe->name=nameIn;
+    char *newName;
+    newName = strdup(nameIn);
+    johnDoe->name = newName;
     Grade *gradeList;
-    johnDoe->gradeCounter=0;
+    johnDoe->gradeCounter = 0;
     gradeList=malloc(sizeof(Grade));
     johnDoe->grades=gradeList;
     johnDoe->gpa=0;
@@ -19,6 +22,9 @@ Student * createStudent(int idIn, char *nameIn){
     return johnDoe;
 }
 
+void sortGrades(Student *johnDoe){
+
+}
 
 void deleteStudent(Student *johnDoe){
 
@@ -38,7 +44,7 @@ float calculateGpa(Student * johnDoe){
     Grade *temp;
     for(int i=0; i<johnDoe->gradeCounter; i++){
         temp = &johnDoe->grades[i];
-        sum+= temp->classGrade;
+        sum+= (temp->classGrade/25);
     }
 
     float result = (sum/johnDoe->gradeCounter);
@@ -46,7 +52,7 @@ float calculateGpa(Student * johnDoe){
 }
 
 void changeStudentName(Student *johnDoe, char *newName){
-    johnDoe->name=newName;
+    johnDoe->name = newName;
 }
 
 void changeStudentId(Student *johnDoe, int newId){
@@ -108,7 +114,23 @@ void printClassList(Student *johnDoe){
         return;
     }
     for(int i=0; i<johnDoe->gradeCounter; i++){
-        printf("%d.\tClass Name: %s\tClass Grade: %f\n\n", i, johnDoe->grades[i].className, johnDoe->grades[i].classGrade);
+        printf("%d.\n\tClass Name: %s\n\tClass Grade: %f\n\n", i+1, johnDoe->grades[i].className, johnDoe->grades[i].classGrade);
     }
 }
 
+
+char *getStudentName(Student * johnDoe){
+    return johnDoe->name;
+}
+
+void printGradeGraph(Student *johnDoe){
+    printf("");
+    for(int i=0; i<johnDoe->gradeCounter; i++){
+        printf("\n%d.\t%s: ", i+1, johnDoe->grades[i].className);
+        int repetitions = johnDoe->grades[i].classGrade/10;
+        for(int j=0; j<repetitions; j++){
+            printf("#");
+        }
+        printf(" (%f)\n\n", johnDoe->grades->classGrade);
+    }
+}
