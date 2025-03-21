@@ -60,20 +60,6 @@ void changeStudentId(Student *johnDoe, int newId){
 }
 
 
-/*void addGrade(Student *johnDoe, Grade *newGrade){
-    johnDoe->gradeCounter++;
-
-    if(johnDoe->gradeCounter == 1){
-        johnDoe->grades[johnDoe->gradeCounter] = *newGrade;
-        johnDoe->gpa = calculateGpa(johnDoe);
-        return;
-    }
-
-
-    johnDoe->grades = (Grade *)realloc(johnDoe->grades, (sizeof(Grade) * johnDoe->gradeCounter));
-    johnDoe->grades[johnDoe->gradeCounter] = *newGrade;
-    johnDoe->gpa = calculateGpa(johnDoe);
-}*/
 
 
 void addGrade(Student *johnDoe, Grade *newGrade){
@@ -119,18 +105,22 @@ void printClassList(Student *johnDoe){
 }
 
 
+
+
+
+
+
 char *getStudentName(Student * johnDoe){
     return johnDoe->name;
 }
 
 void printGradeGraph(Student *johnDoe){
-    printf("");
+    printf("\nStudent Name:\t%s\nStudent ID:\t%d\nStudent GPA:\t(%f)\n", johnDoe->name, johnDoe->id, johnDoe->gpa);
     for(int i=0; i<johnDoe->gradeCounter; i++){
         printf("\n%d.\t%s: ", i+1, johnDoe->grades[i].className);
         int repetitions = johnDoe->grades[i].classGrade/10;
         for(int j=0; j<repetitions; j++){
             printf("#");
         }
-        printf(" (%f)\n\n", johnDoe->grades->classGrade);
     }
 }
