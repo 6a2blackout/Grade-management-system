@@ -22,10 +22,6 @@ Student * createStudent(int idIn, char *nameIn){
     return johnDoe;
 }
 
-void sortGrades(Student *johnDoe){
-
-}
-
 void deleteStudent(Student *johnDoe){
 
     for(int i=0; i<johnDoe->gradeCounter; i++){
