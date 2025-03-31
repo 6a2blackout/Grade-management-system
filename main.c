@@ -134,7 +134,7 @@ int main(int argc, char * * argv){
     Student **studentList = malloc(size);
 
     printf("\n1.\tCreate a new Student\n\n2.\tCSV Files\n\n3.\tAdd Grade for a Student\n\n4.\tUpdate Student Details");
-    printf("\n\n5.\tPrint Student List\n\n6.\tPrint Student Grades\n\n-1.\tQuit\n\n");
+    printf("\n\n5.\tPrint Student List\n\n6.\tSearch for Student\n\n-1.\tQuit\n\n");
     printf("Enter Choice : ");
     scanf("%d", &choice);
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -358,7 +358,7 @@ int main(int argc, char * * argv){
             break;
         }
         printf("\n1.\tCreate a new Student\n\n2.\tCSV Files\n\n3.\tAdd Grade for a Student\n\n4.\tUpdate Student Details");
-        printf("\n\n5.\tPrint Student List\n\n6.\tPrint Student Grades\n\n-1.\tQuit\n\n");
+        printf("\n\n5.\tPrint Student List\n\n6.\tSearch for Student\n\n-1.\tQuit\n\n");
         printf("Enter Choice : ");
         scanf("%d", &choice);
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
