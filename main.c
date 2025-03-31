@@ -137,8 +137,6 @@ int main(int argc, char * * argv){
     printf("\n\n5.\tPrint Student List\n\n6.\tSearch for Student\n\n-1.\tQuit\n\n");
     printf("Enter Choice : ");
     scanf("%d", &choice);
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-
     int studentIdIn;
     char studentNameIn[50];
     int targetId;
@@ -148,13 +146,49 @@ int main(int argc, char * * argv){
     int setter;
 
 
+    if((choice < -1) || (choice == 0) || (choice > 6)){
+        while((choice < -1) || (choice == 0) || (choice > 6)){
+            printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            printf("WRONG CHOICE CHOOSE AGAIN\n\n");
+
+            printf("\n1.\tCreate a new Student\n\n2.\tCSV Files\n\n3.\tAdd Grade for a Student\n\n4.\tUpdate Student Details");
+            printf("\n\n5.\tPrint Student List\n\n6.\tSearch for Student\n\n-1.\tQuit\n\n");
+            printf("Enter Choice : ");
+            scanf("%d", &choice);
+        }
+    }
+
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
     while(choice != -1){
         switch (choice)
         {
         case 1:
             printf("Enter Student ID:\t");
-            scanf("%d", &studentIdIn);
+            targetId = -1;
+            scanf("%d", &targetId);
+            setter = 1;
+            for(int i=0; i<count; i++){
+                if(studentList[i]->id == targetId){
+                    i=count;
+                    setter = 0;
+                }
+            }
+            if(setter == 0){
+                while(setter == 0){
+                    printf("\nID already exists\n\nEnter new ID:\t");
+                    scanf("%d", &targetId);
+                    for(int i=0; i<count; i++){
+                        if(studentList[i]->id == targetId){
+                            i=count;
+                            setter = 0;
+                        }
+                        else{
+                            setter = 1;
+                        }
+                    }
+                }
+            }
             printf("\n\nEnter Student Name:\t");
             scanf("%s", studentNameIn);
 
@@ -162,7 +196,7 @@ int main(int argc, char * * argv){
 
             size = count * sizeof(Student *);
             studentList = realloc(studentList, size);
-            studentList[count-1] = createStudent(studentIdIn, studentNameIn);
+            studentList[count-1] = createStudent(targetId, studentNameIn);
 
             printf("\n\t\t\t\t\t-------------------------------STUDENT ADDED SUCCESSFULLY--------------------------------\n\n");
 
@@ -337,6 +371,7 @@ int main(int argc, char * * argv){
             for(int i=0; i<count; i++){
                 if(studentList[i]->id == targetId){
                     printGradeGraph(studentList[i]);
+                    printf("\n----------------------------------------------\n");
                     i=count;
                     setter = 1;
                 }
@@ -357,10 +392,22 @@ int main(int argc, char * * argv){
         default:
             break;
         }
+        printf("\n\n");
         printf("\n1.\tCreate a new Student\n\n2.\tCSV Files\n\n3.\tAdd Grade for a Student\n\n4.\tUpdate Student Details");
         printf("\n\n5.\tPrint Student List\n\n6.\tSearch for Student\n\n-1.\tQuit\n\n");
         printf("Enter Choice : ");
         scanf("%d", &choice);
+        if((choice < -1) || (choice == 0) || (choice > 6)){
+            while((choice < -1) || (choice == 0) || (choice > 6)){
+                printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                printf("\t\t\t\tWRONG CHOICE\n\t\t\t\tCHOOSE AGAIN\n");
+    
+                printf("\n1.\tCreate a new Student\n\n2.\tCSV Files\n\n3.\tAdd Grade for a Student\n\n4.\tUpdate Student Details");
+                printf("\n\n5.\tPrint Student List\n\n6.\tSearch for Student\n\n-1.\tQuit\n\n");
+                printf("Enter Choice : ");
+                scanf("%d", &choice);
+            }
+        }
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
     }

@@ -113,7 +113,7 @@ char *getStudentName(Student * johnDoe){
 void printGradeGraph(Student *johnDoe){
     printf("\nStudent Name:\t%s\nStudent ID:\t%d\nStudent GPA:\t(%f)\n", johnDoe->name, johnDoe->id, johnDoe->gpa);
     for(int i=0; i<johnDoe->gradeCounter; i++){
-        printf("\n%d.\t%s: ", i+1, johnDoe->grades[i].className);
+        printf("\n%d.\t%s:   \t", i+1, johnDoe->grades[i].className);
         int repetitions = johnDoe->grades[i].classGrade/10;
         for(int j=0; j<repetitions; j++){
             printf("#");
